@@ -21,13 +21,10 @@ Props:
 | playerVars              | object | {}       | https://developers.google.com/youtube/player_parameters                                              |
 | styles                  | object | {}       | Styles to apply over the wrapper                                                                     |
 
-## Change log
-
-The change log can be found on the [Releases page](https://github.com/https://github.com/SaraVieira/react-lazy-youtube/releases).
 
 ## Contributing
 
-Everyone is welcome to contribute. Please take a moment to review the [contributing guidelines](Contributing.md).
+Everyone is welcome to contribute. 
 
 ## Authors and license
 
