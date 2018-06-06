@@ -4,6 +4,8 @@
   "author": "Sara Vieira",
   "main": "dist/index.js",
   "dependencies": {
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "react-youtube": "^7.6.0",
     "remcalc": "^1.0.10",
     "styled-is": "^1.1.3"
