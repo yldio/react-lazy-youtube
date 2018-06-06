@@ -8,6 +8,10 @@
     "remcalc": "^1.0.10",
     "styled-is": "^1.1.3"
   },
+  "files": [
+    "dist/index.js",
+    "dist/index.js.map"
+  ],
   "scripts": {
     "start": "react-scripts start",
     "build": "webpack",
