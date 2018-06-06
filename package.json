@@ -2,6 +2,7 @@
   "name": "react-lazy-youtube",
   "version": "0.1.0",
   "author": "Sara Vieira",
+  "main": "dist/index.js",
   "dependencies": {
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
@@ -13,18 +14,26 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "babel src --out-file dist/index.js --source-maps",
     "test": "react-scripts test --env=jsdom",
     "posttest": "npm run format",
     "eject": "react-scripts eject",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
-    "format": "prettier --write '**/*.{js,css,md}'"
+    "format": "prettier --write '**/*.{js,css,md}'",
+    "prepublish": "npm run build"
   },
   "peerDependencies": {
     "styled-components": "^3.3.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "",
+    "babel-preset-react": "",
     "prettier": "^1.13.4",
     "react-styleguidist": "^7.0.17",
     "styled-components": "^3.3.2",

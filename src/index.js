@@ -1,8 +1,3 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import Player from "./Player"
+import Player from "./Components/Player"
 
-ReactDOM.render(
-  <Player id="-EX4X1SP2Ls" imageSize="maxresdefault" />,
-  document.getElementById("root")
-)
+export default Player

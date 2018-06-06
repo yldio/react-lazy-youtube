@@ -3,6 +3,7 @@ import styled from "styled-components"
 import YouTube from "react-youtube"
 import is, { isNot } from "styled-is"
 import remcalc from "remcalc"
+import PropTypes from "prop-types"
 
 import Play from "./Play"
 
@@ -69,7 +70,6 @@ class Player extends Component {
   render = () => {
     const {
       id,
-      onClick,
       onPlay,
       onPause,
       onEnd,
@@ -77,10 +77,10 @@ class Player extends Component {
       onStateChange,
       onPlaybackRateChange,
       onPlaybackQualityChange,
-      imageSize = "default",
-      playerVars = {},
+      imageSize,
+      playerVars,
       noCookies,
-      styles = {},
+      styles,
       ...props
     } = this.props
 
@@ -96,6 +96,7 @@ class Player extends Component {
 
     const image = () =>
       validImageSizes.includes(imageSize) ? imageSize : "default"
+
     return (
       <VideoWrapper {...props} style={styles}>
         <Video>
@@ -116,7 +117,7 @@ class Player extends Component {
                 host: noCookies
                   ? "https://www.youtube-nocookie.com"
                   : "https://www.youtube.com",
-                playerVars
+                ...playerVars
               }}
             />
           ) : (
@@ -136,3 +137,50 @@ class Player extends Component {
 }
 
 export default Player
+
+Player.defaultProps = {
+  onPlay: () => {},
+  onPause: () => {},
+  onEnd: () => {},
+  onError: () => {},
+  onStateChange: () => {},
+  onPlaybackRateChange: () => {},
+  onPlaybackQualityChange: () => {},
+  imageSize: "default",
+  playerVars: {},
+  noCookies: false,
+  styles: {}
+}
+
+Player.propTypes = {
+  /** ID of the youtube video to play . */
+  id: PropTypes.string.isRequired,
+  /** .function to run when the video starts Playing */
+  onPlay: PropTypes.func,
+  /** .Function that runs when the video is paused */
+  onPause: PropTypes.func,
+  /** . Functinn that runs on the end of the video */
+  onEnd: PropTypes.func,
+  /** .Function that runs when the video encounters an error */
+  onError: PropTypes.func,
+  /** .Function that runs when the video changes state like from playing to paused */
+  onStateChange: PropTypes.func,
+  /** .Function that runs when the video encounters changes playback rater */
+  onPlaybackRateChange: PropTypes.func,
+  /** .Function that runs when the video changes quality */
+  onPlaybackQualityChange: PropTypes.func,
+  /** https://developers.google.com/youtube/player_parameters */
+  playerVars: PropTypes.object,
+  /** .Styles to apply over the wrappr */
+  styles: PropTypes.object,
+  /** .if set to true will change the host to  "https://www.youtube-nocookie.com" */
+  noCookies: PropTypes.bool,
+  /** .Size of the thumbnail we get from youtube */
+  imageSize: PropTypes.oneOf([
+    "default",
+    "hqdefault",
+    "mqdefault",
+    "sddefault",
+    "maxresdefault"
+  ])
+}
