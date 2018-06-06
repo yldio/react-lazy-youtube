@@ -1,17 +1,19 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import YouTube from 'react-youtube'
-import is, { isNot } from 'styled-is'
-import remcalc from 'remcalc'
+import React, { Component } from "react"
+import styled from "styled-components"
+import YouTube from "react-youtube"
+import is, { isNot } from "styled-is"
+import remcalc from "remcalc"
 
-import Play from './Play'
+import Play from "./Play"
 
 const Video = styled.div``
 
 const VideoWrapper = styled.section`
   position: relative;
+  width: 640px;
+  height: 360px;
   margin: auto;
-  ${isNot('cinemaMode')`
+  ${isNot("cinemaMode")`
     &:before {
       display: block;
       content: '';
@@ -34,7 +36,7 @@ const Iframe = styled(YouTube)`
   border: none;
   transition: all 200ms ease;
   height: 100%;
-  ${is('cinemaMode')`
+  ${is("cinemaMode")`
     height: ${remcalc(600)};
     @media (max-width: ${remcalc(768)}) {
       height: auto;
@@ -54,7 +56,7 @@ const Image = styled.div`
   height: 100%;
   overflow: hidden;
   box-shadow: ${props => props.theme.shadow};
-  ${is('cinemaMode')`
+  ${is("cinemaMode")`
     height: auto;
   `};
 `
@@ -75,28 +77,25 @@ class Player extends Component {
       onStateChange,
       onPlaybackRateChange,
       onPlaybackQualityChange,
-      imageSize = 'default',
+      imageSize = "default",
       playerVars = {},
       noCookies,
-      styles = {
-        width: '640px',
-        height: '360px'
-      },
+      styles = {},
       ...props
     } = this.props
 
     const { showVideo } = this.state
 
     const validImageSizes = [
-      'default',
-      'hqdefault',
-      'mqdefault',
-      'sddefault',
-      'maxresdefault'
+      "default",
+      "hqdefault",
+      "mqdefault",
+      "sddefault",
+      "maxresdefault"
     ]
 
     const image = () =>
-      validImageSizes.includes(imageSize) ? imageSize : 'default'
+      validImageSizes.includes(imageSize) ? imageSize : "default"
     return (
       <VideoWrapper {...props} style={styles}>
         <Video>
@@ -113,10 +112,10 @@ class Player extends Component {
               onPlaybackRateChange={onPlaybackRateChange}
               onPlaybackQualityChange={onPlaybackQualityChange}
               opts={{
-                width: '100%',
+                width: "100%",
                 host: noCookies
-                  ? 'https://www.youtube-nocookie.com'
-                  : 'https://www.youtube.com',
+                  ? "https://www.youtube-nocookie.com"
+                  : "https://www.youtube.com",
                 playerVars
               }}
             />

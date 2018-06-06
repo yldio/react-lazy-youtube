@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export default styled.button`
   background: #282828;
@@ -28,7 +28,7 @@ export default styled.button`
     background: inherit;
     border-radius: 5% / 50%;
     bottom: 9%;
-    content: '';
+    content: "";
     left: -5%;
     position: absolute;
     right: -5%;
@@ -39,7 +39,7 @@ export default styled.button`
     border-style: solid;
     border-width: 1em 0 1em 1.732em;
     border-color: transparent transparent transparent rgba(255, 255, 255, 0.75);
-    content: ' ';
+    content: " ";
     font-size: 0.75em;
     height: 0;
     margin: -1em 0 0 -0.75em;
