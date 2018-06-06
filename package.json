@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "babel src --out-file dist/index.js --source-maps",
+    "build": "webpack",
     "test": "react-scripts test --env=jsdom",
     "posttest": "npm run format",
     "eject": "react-scripts eject",
@@ -20,11 +20,11 @@
     "prepublish": "npm run build"
   },
   "peerDependencies": {
-    "styled-components": "^3.3.2",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "styled-components": "^3.3.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -37,7 +37,8 @@
     "prettier": "^1.13.4",
     "react-styleguidist": "^7.0.17",
     "styled-components": "^3.3.2",
-    "webpack": "^4.11.1"
+    "webpack": "^4.11.1",
+    "webpack-cli": "^3.0.2"
   },
   "license": "MIT",
   "homepage": "https://github.com/yldio/react-lazy-youtube",
