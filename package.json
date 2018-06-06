@@ -1,6 +1,6 @@
 {
   "name": "react-lazy-youtube",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Sara Vieira",
   "main": "dist/index.js",
   "dependencies": {
