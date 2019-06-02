@@ -1,9 +1,8 @@
-import React, { Component } from "react"
+import React, { Component, Suspense, lazy } from "react"
 import styled from "styled-components"
-import YouTube from "react-youtube"
 import is, { isNot } from "styled-is"
-import remcalc from "remcalc"
 import PropTypes from "prop-types"
+const YouTube = lazy(() => import('./Youtube'));
 
 import Play from "./Play"
 
@@ -28,20 +27,6 @@ const VideoWrapper = styled.section`
         right: 0;
         bottom: 0;
       }
-  `};
-`
-
-const Iframe = styled(YouTube)`
-  position: relative;
-  z-index: 3;
-  border: none;
-  transition: all 200ms ease;
-  height: 100%;
-  ${is("cinemaMode")`
-    height: ${remcalc(600)};
-    @media (max-width: ${remcalc(768)}) {
-      height: auto;
-    }
   `};
 `
 
@@ -101,9 +86,10 @@ class Player extends Component {
       <VideoWrapper {...props} style={styles}>
         <Video>
           {showVideo ? (
-            <Iframe
+          <Suspense fallback={<div>Loading...</div>}>
+            <YouTube
               videoId={id}
-              id={`a-${id} do-not-delete-this-hack`}
+              id={`${id}`}
               onReady={e => e.target.playVideo()}
               onPlay={onPlay}
               onPause={onPause}
@@ -120,6 +106,7 @@ class Player extends Component {
                 ...playerVars
               }}
             />
+          </Suspense>
           ) : (
             <Image>
               <Play onClick={this.showVideo} aria-label="Play Video" />
